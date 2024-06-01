@@ -65,8 +65,9 @@ function compileTemplate(filePath: string) {
 /**
  * Partials
  */
-registerPartialFile("nav", "src/partials/nav.hbs");
 registerPartialFile("head", "src/partials/head.hbs");
+registerPartialFile("nav", "src/partials/nav.hbs");
+registerPartialFile("footer", "src/partials/footer.hbs");
 registerPartialFile("posts", "src/partials/posts.hbs");
 
 /**

@@ -46,8 +46,9 @@ server. At the time of writing, the stack is:
 
 There's probably a few tweaks I'd like to make in the future, like:
 
--   **Re-usable components:** Maybe React in pure SSR mode, or just a simple
-    templating engine like Handlebars.
+-   **True hot reload:** `nodemon` is great for re-running the build process,
+    but I'm currently `rm -rf`'ing the `dist` directory and re-building
+    everything. I'd like to make this a bit more granular.
 -   **More gloss:** I'd like to add some more polish to the design, and maybe
     some animations. I'm excited to see what I can do with just CSS.
 -   **Sturdier build process:** The current build process works, but it's a bit

@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "concurrently -n BUILD,SERVE -c \"bgBlue.bold,bgGreen.bold\" \"npm:build-watch\" \"npm:serve\"",
         "build": "rm -rf dist && tsx src/ts/build.ts",
-        "build-watch": "nodemon --watch ./src --ext html,css,md,ts,png,jpeg,jpg --exec \"npm run build\"",
+        "build-watch": "nodemon --watch ./src --ext html,hbs,css,md,ts,png,jpeg,jpg --exec \"npm run build\"",
         "serve": "http-server ./dist -c-1 --silent --port 3000"
     },
     "devDependencies": {

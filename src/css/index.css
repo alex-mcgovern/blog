@@ -394,7 +394,8 @@
     }
 
     main,
-    nav {
+    nav,
+    footer {
         max-width: var(--width-main);
         margin: 0 auto;
     }
@@ -436,6 +437,21 @@
             width: var(--space-6);
             height: var(--space-6);
         }
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+
+        padding: var(--space-4) 0;
+        margin-top: var(--space-4);
+        border-top: 1px solid var(--slate-5);
+
+        color: var(--slate-11);
+
+        position: sticky;
+        top: 100%;
     }
 
     img {
