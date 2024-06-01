@@ -1,0 +1,6 @@
+{{#each posts as |p|}}
+    <a class="blog-index-link" href="/blog/{{p.fileName}}">
+        <div class="blog-index-link-date">{{p.date}}</div>
+        <div class="blog-index-link-title">{{p.title}}</div>
+    </a>
+{{/each}}
