@@ -1,16 +1,15 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import rehypeSanitize from 'rehype-sanitize'
+import matter from 'gray-matter'
+import Handlebars from 'handlebars'
+import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
+import remarkAlerts from 'remark-alerts'
+import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
-import remarkGfm from 'remark-gfm'
-import matter from 'gray-matter'
 import { z } from 'zod'
-import Handlebars from 'handlebars'
-import rehypePrettyCode from 'rehype-pretty-code'
-import remarkAlerts from 'remark-alerts'
 
 /**
  * fs
