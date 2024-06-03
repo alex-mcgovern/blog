@@ -12,12 +12,14 @@ East. I joined the team in 2023 to help build out the "Fuse Portal", a web app
 to allow our customers to manage their accounts and transactions — a layer over
 the public facing API.
 
+## The problem: API contracts constantly shifting
+
 The frontend and backend were built in tandem, meaning that the API was being
 shaped and re-shaped frequently, and contracts could be broken on each new
 release. We needed a way to ensure correctness on the frontend, and to be agile
 about it, without blocking the backend team on every release.
 
-## Enter `openapi-zod-client`
+## The solution: `openapi-zod-client`
 
 [`openapi-zod-client`](https://github.com/astahmer/openapi-zod-client) is a
 nifty little library from [Alexandre Stahmer](https://github.com/astahmer) that
