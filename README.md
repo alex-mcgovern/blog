@@ -40,7 +40,7 @@ Start the dev server
 
 To build this project for deployment
 
-```bash
+```zsh
   npm run build
 ```
 
