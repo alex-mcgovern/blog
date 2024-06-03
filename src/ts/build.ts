@@ -6,55 +6,56 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 import remarkGfm from 'remark-gfm'
-import rehypeHighlight from 'rehype-highlight'
 import matter from 'gray-matter'
 import { z } from 'zod'
 import Handlebars from 'handlebars'
+import rehypePrettyCode from 'rehype-pretty-code'
+import remarkAlerts from 'remark-alerts'
 
 /**
  * fs
  */
 function ensureDirExists(p: string) {
-    if (!fs.existsSync(p)) {
-        fs.mkdirSync(p)
-    }
+  if (!fs.existsSync(p)) {
+    fs.mkdirSync(p)
+  }
 }
 
 function copyDir(src: string, dest: string) {
-    ensureDirExists(dest)
+  ensureDirExists(dest)
 
-    const entries = fs.readdirSync(src, { withFileTypes: true })
+  const entries = fs.readdirSync(src, { withFileTypes: true })
 
-    for (const entry of entries) {
-        const srcPath = path.join(src, entry.name)
-        const destPath = path.join(dest, entry.name)
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name)
+    const destPath = path.join(dest, entry.name)
 
-        if (entry.isDirectory()) {
-            copyDir(srcPath, destPath)
-            console.info(`✅ Copied directory ${srcPath} to ${destPath}`)
-        } else {
-            fs.copyFileSync(srcPath, destPath)
-            console.info(`✅ Copied file ${srcPath} to ${destPath}`)
-        }
+    if (entry.isDirectory()) {
+      copyDir(srcPath, destPath)
+      console.info(`✅ Copied directory ${srcPath} to ${destPath}`)
+    } else {
+      fs.copyFileSync(srcPath, destPath)
+      console.info(`✅ Copied file ${srcPath} to ${destPath}`)
     }
+  }
 }
 
 function writeFile(p: string, content: string) {
-    ensureDirExists(path.dirname(p))
-    fs.writeFileSync(p, content)
+  ensureDirExists(path.dirname(p))
+  fs.writeFileSync(p, content)
 }
 
 /**
  * Handlebars
  */
 function registerPartialFile(name: string, filePath: string) {
-    const fileContent = fs.readFileSync(filePath, 'utf8')
-    Handlebars.registerPartial(name, fileContent)
+  const fileContent = fs.readFileSync(filePath, 'utf8')
+  Handlebars.registerPartial(name, fileContent)
 }
 
 function compileTemplate(filePath: string) {
-    const fileContent = fs.readFileSync(filePath, 'utf8')
-    return Handlebars.compile(fileContent)
+  const fileContent = fs.readFileSync(filePath, 'utf8')
+  return Handlebars.compile(fileContent)
 }
 
 /**
@@ -77,8 +78,8 @@ const blogIndexTemplate = compileTemplate('src/blog.hbs')
  */
 
 const homeHtml = homeTemplate({
-    title: 'Alex McGovern',
-    description: 'Personal blog of Alex McGovern',
+  title: 'Alex McGovern',
+  description: 'Personal blog of Alex McGovern',
 })
 writeFile('dist/index.html', homeHtml)
 
@@ -93,57 +94,60 @@ const files = fs.readdirSync('src/md').filter((f) => f.endsWith('.md'))
 const posts: { fileName: string; date: string; title: string }[] = []
 
 for (const file of files.reverse()) {
-    const mdContent = fs.readFileSync(path.join('src/md', file), 'utf-8')
+  const mdContent = fs.readFileSync(path.join('src/md', file), 'utf-8')
 
-    // Parse the title and description from the front matter
-    // Validate the front matter with zod
-    const parsed = matter(mdContent)
-    const { description, title } = z
-        .object({
-            title: z.string(),
-            description: z.string(),
-        })
-        .parse(parsed.data)
-
-    // Extract the date from the filename e.g. 2024-01-01-foo-bar.md
-    // Validate the date format with zod
-    const date = new Date(
-        z.string().date().parse(file.slice(0, 10)),
-    ).toLocaleDateString('en-GB', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+  // Parse the title and description from the front matter
+  // Validate the front matter with zod
+  const parsed = matter(mdContent)
+  const { description, title } = z
+    .object({
+      title: z.string(),
+      description: z.string(),
     })
+    .parse(parsed.data)
 
-    // Pipe the markdown content through unified to generate HTML
-    const content = await unified()
-        .use(remarkParse)
-        .use(remarkGfm)
-        .use(remarkRehype)
-        .use(rehypeSanitize)
-        .use(rehypeHighlight)
-        .use(rehypeStringify)
-        .process(parsed.content)
+  // Extract the date from the filename e.g. 2024-01-01-foo-bar.md
+  // Validate the date format with zod
+  const date = new Date(
+    z.string().date().parse(file.slice(0, 10)),
+  ).toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 
-    Handlebars.registerPartial('post', String(content))
-
-    const homeHtml = blogPostTemplate({
-        title,
-        description,
-        content,
+  // Pipe the markdown content through unified to generate HTML
+  const content = await unified()
+    .use(remarkParse)
+    // .use(rehypeSanitize)
+    .use(remarkGfm)
+    .use(remarkAlerts, { classPrefix: 'md-alert' })
+    .use(remarkRehype)
+    .use(rehypePrettyCode, {
+      keepBackground: false,
     })
+    .use(rehypeStringify)
+    .process(parsed.content)
 
-    const htmlFilename = file.replace('.md', '.html')
+  Handlebars.registerPartial('post', String(content))
 
-    writeFile(path.join('dist/blog', htmlFilename), homeHtml)
-    console.info(`✅ Generated ${title} [${file}]`)
+  const homeHtml = blogPostTemplate({
+    title,
+    description,
+    content,
+  })
 
-    // Store the metadata for the blog index
-    posts.push({
-        fileName: htmlFilename,
-        date,
-        title,
-    })
+  const htmlFilename = file.replace('.md', '.html')
+
+  writeFile(path.join('dist/blog', htmlFilename), homeHtml)
+  console.info(`✅ Generated ${title} [${file}]`)
+
+  // Store the metadata for the blog index
+  posts.push({
+    fileName: htmlFilename,
+    date,
+    title,
+  })
 }
 
 /**
@@ -151,9 +155,9 @@ for (const file of files.reverse()) {
  */
 
 const blogIndex = blogIndexTemplate({
-    title: 'Alex McGovern',
-    description: 'Personal blog of Alex McGovern',
-    posts,
+  title: 'Alex McGovern',
+  description: 'Personal blog of Alex McGovern',
+  posts,
 })
 writeFile('dist/blog/index.html', blogIndex)
 console.info('✅ Generated blog index')
