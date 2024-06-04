@@ -1,11 +1,9 @@
 ---
 title: Saving hundreds of hours with codegen, OpenAPI and Zod
 description:
-  How we saved hours at Fuse by generating validation schemas and types from
-  OpenAPI specs.
+  How we saved hundreds of hours at Fuse by generating validation schemas and types from
+  OpenAPI specs using openapi-zod-client.
 ---
-
-# Saving hundreds of hours with codegen, OpenAPI and Zod
 
 At [Fuse](https://fuse.me), we're enabling payments over API across the Middle
 East. I joined the team in 2023 to help build out the "Fuse Portal", a web app

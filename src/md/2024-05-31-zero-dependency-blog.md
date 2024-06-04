@@ -1,6 +1,6 @@
 ---
 title: Building a zero runtime dependency blog without a framework
-description: Ditching the frameworks and building a blog from scratch.
+description: You don't need React, or any other JS framework, to build a blog. Here's how I built a zero-dependency blog with Typescript, Markdown, and CSS.
 ---
 
 ## Building a zero-dependency blog with Typescript, Markdown, and CSS
