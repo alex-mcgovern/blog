@@ -37,7 +37,7 @@ The initial build-out was quick, and by the end of 2023, we had a fully function
 
 ### Why I chose Next.js
 
-In April 2023, when we kicked off, Next.js was _very much_ in vogue. It was the go-to framework for React developers, and for good reason — Next.js <=13.x.x was a great framework for building React applications with **some** server-side functionality, the server/client divide was clear (`getServerSideProps`, `getStaticProps`, etc.), and it had a great developer experience and documentation.
+In April 2023, when we kicked off, Next.js was _very much_ in vogue. It was the go-to framework for React developers, and for good reason — Next.js 13 and below was a great framework for building React applications with **some** server-side functionality, the server/client divide was clear (`getServerSideProps`, `getStaticProps`, etc.), and it had a great developer experience and documentation.
 
 I had worked with it already, trusted it, and could use it to get up and running and start delivering value quickly, so that's what we went with.
 
@@ -187,7 +187,7 @@ In fact, we observed that in real-world usage, the _true_ time to interactive (a
 Determined to get to the bottom of this, we did some pretty unscientific testing of loading times (time until last request completed with no cache). We ran this across 10 separate runs for each app, and found that there was negligible difference between the Next.js and Vite versions of the app. (Apart from what seemed to be a few statistical aberrations where Next.js was considerably slower, which seem to be attributable to resource usage on the ECS task).
 
 <figure>
-    <img alt="Loading times from both apps" src="../assets/2024-06-03-why-we-stopped-using-lighthouse-scores.png"></img>
+    <img alt="Loading times from both apps" src="../assets/2024-06-03-why-we-stopped-using-next-js-loading-times.svg"></img>
     <figcaption>Loading times in seconds across 10 runs for both apps</figcaption>
 </figure>
 
