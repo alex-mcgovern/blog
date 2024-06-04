@@ -5,7 +5,6 @@
     "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineEnding": "lf",
     "lineWidth": 80,
     "attributePosition": "auto"
   },
@@ -114,7 +113,7 @@
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
       "trailingComma": "all",
-      "semicolons": "asNeeded",
+      "semicolons": "always",
       "arrowParentheses": "always",
       "bracketSpacing": true,
       "bracketSameLine": false,
