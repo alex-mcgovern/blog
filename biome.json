@@ -4,7 +4,7 @@
     "enabled": true,
     "formatWithErrors": false,
     "indentStyle": "space",
-    "indentWidth": 2,
+    "indentWidth": 4,
     "lineWidth": 80,
     "attributePosition": "auto"
   },
@@ -106,7 +106,12 @@
         "useValidTypeof": "error"
       }
     },
-    "ignore": [".git", "dist", "node_modules", "tmp"]
+    "ignore": [
+      ".git",
+      "dist",
+      "node_modules",
+      "tmp"
+    ]
   },
   "javascript": {
     "formatter": {
@@ -123,7 +128,12 @@
   },
   "overrides": [
     {
-      "include": ["*.ts", "*.tsx", "*.mts", "*.cts"],
+      "include": [
+        "*.ts",
+        "*.tsx",
+        "*.mts",
+        "*.cts"
+      ],
       "linter": {
         "rules": {
           "correctness": {
