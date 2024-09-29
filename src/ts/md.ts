@@ -12,7 +12,7 @@ import { unified } from 'unified';
 import { ZodError, type z } from 'zod';
 import { ALERT_ICONS } from './constants/ALERT_ICONS.js';
 
-export function markdownToHtml(mdContent: string) {
+function markdownToHtml(mdContent: string) {
     return (
         unified()
             .use(remarkParse)
