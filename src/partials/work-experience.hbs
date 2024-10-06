@@ -1,0 +1,13 @@
+<ul class="cv-entry-grid">
+    {{#each workExperience as |we|}}
+    <li class="cv-entry-item">
+        <details>
+            <summary>
+                <div class="cv-entry-title">{{we.jobTitle}} @ {{we.company}}</div>
+                <div class="cv-entry-date">{{we.startDate}}—{{we.endDate}}</div>
+            </summary>
+            <div class="cv-entry-content">{{{we.content}}}</div>
+        </details>
+    </li>
+    {{/each}}
+</ul>
