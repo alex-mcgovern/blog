@@ -1,5 +1,5 @@
 import { blog } from './builders/blog.js';
-import { buildHomepage } from './builders/home.js';
+import { home } from './builders/home.js';
 import { copyDir, ensureDirExists } from './fs.js';
 import { registerPartialFile } from './handlebars.js';
 
@@ -14,5 +14,5 @@ registerPartialFile('posts', 'src/partials/posts.hbs');
 registerPartialFile('postHeader', 'src/partials/post-header.hbs');
 registerPartialFile('workExperience', 'src/partials/work-experience.hbs');
 
-await buildHomepage();
+await home();
 await blog();

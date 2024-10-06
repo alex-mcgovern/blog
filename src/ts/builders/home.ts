@@ -18,7 +18,7 @@ const frontmatterSchema = z.object({
 
 type FrontMatter = z.output<typeof frontmatterSchema>;
 
-export async function buildHomepage() {
+export async function home() {
     const { html: homepageIntro } = await processMarkdownFile(
         'src/md/homepage-intro.md',
     );
@@ -27,7 +27,7 @@ export async function buildHomepage() {
     const files = getFilesWithExt(WORK_EXP_PATH, '.md');
     const entries: (FrontMatter & { content: string })[] = [];
 
-    for (const filename of files) {
+    for (const filename of files.reverse()) {
         const { html, data } = await processMarkdownFile(
             path.join(WORK_EXP_PATH, filename),
             frontmatterSchema,
