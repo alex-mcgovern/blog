@@ -1,0 +1,64 @@
+@layer base {
+    pre:has(code) {
+        position: relative;
+        overflow: hidden;
+
+        background-color: var(--slate-2);
+
+        display: block;
+        overflow: auto;
+        padding: var(--space-2) 0;
+
+        max-height: var(--height-code);
+
+        code {
+            span {
+                &[data-highlighted-line] {
+                    background: var(--slate-4);
+                }
+            }
+
+            /* white-space: pre-wrap; */
+        }
+    }
+
+    code:not(pre > code) {
+        white-space: nowrap;
+        background-color: var(--slate-2);
+        padding: var(--space-0\.25) var(--space-1);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--slate-5);
+    }
+
+    code {
+        font-family: var(--font-family-code);
+        font-size: var(--font-size-body-md);
+        color: var(--slate-12);
+
+        /* For line numbers */
+        counter-reset: line;
+    }
+
+    code > [data-line]::before {
+        counter-increment: line;
+        content: counter(line);
+
+        /* Other styling */
+        display: inline-block;
+        min-width: var(--space-6);
+        max-width: var(--space-8);
+        margin-right: var(--space-4);
+        text-align: right;
+        color: gray;
+    }
+
+    code[data-line-numbers-max-digits="2"] > [data-line]::before {
+        width: var(--space-2);
+        margin-right: var(--space-4);
+    }
+
+    code[data-line-numbers-max-digits="3"] > [data-line]::before {
+        width: calc(var(--content-overflow) - var(--space-2));
+        margin-right: var(--space-2);
+    }
+}

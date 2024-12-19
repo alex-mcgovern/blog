@@ -1,7 +1,11 @@
 {
+    "[css]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
     "search.exclude": {
         "dist": true
     },
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "quickfix.biome": "explicit",
         "source.organizeImports.biome": "explicit"

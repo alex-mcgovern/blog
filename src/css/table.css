@@ -1,0 +1,43 @@
+@layer base {
+    table {
+        width: 100%;
+        margin: var(--space-8) auto;
+
+        border-collapse: separate;
+        border-spacing: 0;
+
+        color: var(--slate-11);
+
+        thead {
+            background-color: var(--slate-2);
+
+            overflow: hidden;
+
+            font-weight: var(--font-weight-semibold);
+
+            text-align: left;
+            vertical-align: bottom;
+        }
+
+        tr:not(:last-child) td {
+            border-bottom: 1px solid var(--slate-5);
+            border-width: 0 0 1px 0;
+        }
+
+        td,
+        th {
+            margin: 0;
+            overflow: visible;
+            padding: var(--space-2) var(--space-4);
+        }
+
+        td {
+            font-size: inherit;
+        }
+
+        th {
+            text-transform: uppercase;
+            font-size: var(--font-size-body-sm);
+        }
+    }
+}
