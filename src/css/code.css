@@ -22,6 +22,14 @@
         }
     }
 
+    code:not(pre > code) {
+        white-space: nowrap;
+        background-color: var(--slate-2);
+        padding: var(--space-0\.25) var(--space-1);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--slate-5);
+    }
+
     code {
         font-family: var(--font-family-code);
         font-size: var(--font-size-body-md);
@@ -52,13 +60,5 @@
     code[data-line-numbers-max-digits="3"] > [data-line]::before {
         width: calc(var(--content-overflow) - var(--space-2));
         margin-right: var(--space-2);
-    }
-
-    code:not(pre > code) {
-        white-space: nowrap;
-        background-color: var(--slate-2);
-        padding: var(--space-0\.25) var(--space-0\.5);
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--slate-5);
     }
 }

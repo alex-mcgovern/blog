@@ -1,8 +1,10 @@
 @import "./reset.css";
+@import "./code.css";
 @import "./img.css";
 @import "./list.css";
-@import "./code.css";
 @import "./md-alert.css";
+@import "./table.css";
+@import "./video.css";
 
 @layer reset;
 @layer base;
@@ -321,16 +323,6 @@
         }
     }
 
-    video {
-        height: auto;
-
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        border: 1px solid var(--slate-5);
-
-        background-color: var(--slate-2);
-    }
-
     blockquote {
         padding: var(--space-2) var(--space-4);
         margin-bottom: var(--space-4);
@@ -356,22 +348,14 @@
         }
     }
 
-    table,
-    video,
     figure {
         width: 100%;
         margin-top: var(--space-8);
         margin-bottom: var(--space-8);
-        /* width: calc(100% + (2 * var(--content-overflow)));
-        margin: var(--space-4) calc(var(--content-overflow) * -1); */
     }
 
     figure {
         margin: var(--space-4) 0;
-
-        video {
-            /* margin: 0 calc(var(--content-overflow) * -1); */
-        }
 
         figcaption {
             margin-top: var(--space-2);
@@ -444,61 +428,6 @@
     p {
         color: var(--slate-11);
         margin-bottom: var(--space-4);
-    }
-
-    table {
-        /* border-collapse: collapse; */
-        /* border-spacing: 0; */
-        /* empty-cells: show; */
-
-        border-collapse: separate;
-        border-spacing: 0;
-
-        background-color: var(--slate-2);
-        color: var(--slate-11);
-
-        /* border: 1px solid var(--slate-5); */
-        /* border-radius: var(--radius-md); */
-
-        width: 100%;
-
-        margin: var(--space-4) 0;
-
-        thead {
-            border-top-left-radius: var(--radius-md);
-            border-top-right-radius: var(--radius-md);
-            overflow: hidden;
-
-            font-weight: var(--font-weight-semibold);
-
-            text-align: left;
-            vertical-align: bottom;
-        }
-
-        tr:not(:last-child) td,
-        th {
-            border-bottom: 1px solid var(--slate-5);
-            border-width: 0 0 1px 0;
-        }
-
-        td,
-        th {
-            /* border-bottom: 1px solid var(--slate-5);
-            border-width: 0 0 1px 0; */
-
-            font-size: inherit;
-            margin: 0;
-            overflow: visible;
-            padding: var(--space-2) var(--space-4);
-
-            /* &:first-child {
-                padding-left: var(--content-overflow);
-            } */
-
-            /* &:last-child {
-                padding-right: var(--content-overflow);
-            } */
-        }
     }
 }
 

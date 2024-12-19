@@ -3,10 +3,13 @@ title: File naming conventions for modern JS/TS projects
 description: My thoughts and recommendations on how to name your files in a JS/TS project. A topic often deemed non-important, but one that has real-world implications.
 ---
 
-## TL;DR: Use kebab-case or snake_case. 
+## TL;DR: Use kebab-case or snake_case.
+
 - It's a consistent approach that works for any module
 - You don't have to think about it
 - Filesystem case-sensitivity is a thing
+
+---
 
 ## Are file naming conventions actually important?
 
@@ -29,7 +32,7 @@ writing about.
 The most common file naming conventions in modern JavaScript and TypeScript:
 
 | Style      | Example        |
-|------------|----------------|
+| ---------- | -------------- |
 | PascalCase | `MyModule.ts`  |
 | camelCase  | `myModule.ts`  |
 | kebab-case | `my-module.ts` |
@@ -69,7 +72,7 @@ following examples:
 - A node script, containing top-level function calls
 - A module that exports constant values
 - A module that exports types
-  
+
 Time & energy spent thinking about what the correct casing should be (and then
 making an arbitrary decision anyway) is time you could spend on the task at
 hand instead.
@@ -82,21 +85,21 @@ and make note of what it means (if it means anything at all).
 Perhaps the strongest case against "Pascal+Camel" is that different filesystems
 have different case sensitivity, for example:
 
-* The Linux filesystem [ext4](https://en.wikipedia.org/wiki/Ext4) is
-case-sensitive, by default. It interprets `myModule.ts` and `MyModule.ts` as two
-separate files.
-* MacOS' default [APFS](https://en.wikipedia.org/wiki/Apple_File_System) is
-case-insensitive, by default. It interprets the filenames `myModule.ts` and
-`MyModule.ts` as the same file.
+- The Linux filesystem [ext4](https://en.wikipedia.org/wiki/Ext4) is
+  case-sensitive, by default. It interprets `myModule.ts` and `MyModule.ts` as two
+  separate files.
+- MacOS' default [APFS](https://en.wikipedia.org/wiki/Apple_File_System) is
+  case-insensitive, by default. It interprets the filenames `myModule.ts` and
+  `MyModule.ts` as the same file.
 
 Depending on your machine's configuration, bugs may arise when a you change the
 casing of a file by renaming it, e.g.
 `myModule.ts` to `MyModule.ts`
 
 On a case-insensitive filesystem, git won't recognize this change. The internal
-  [`core.ignorecase`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreignoreCase)
-  setting dictates this behavior, and isn't intended to be user-configurable.
-  This can result in git excluding files when staging or committing.
+[`core.ignorecase`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreignoreCase)
+setting dictates this behavior, and isn't intended to be user-configurable.
+This can result in git excluding files when staging or committing.
 
 It's probable that the filesystem differs between your
 local environment and your CI/CD environment. For example, a
@@ -106,6 +109,8 @@ module import may resolve locally but break in CI due to mismatched casing.
     <img alt="Twitter post from Kent C. Dodds about file naming conventions" src="../assets/2024-12-18-kent-c-dodds-tweet.png"></img>
     <figcaption><a href="https://x.com/kentcdodds/status/1249870276688371713">Twitter post from Kent C. Dodds about file naming convention</a></figcaption>
 </figure>
+
+---
 
 ## Conclusion
 
