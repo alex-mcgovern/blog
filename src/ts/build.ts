@@ -1,11 +1,12 @@
 import { blog } from './builders/blog.js';
 import { home } from './builders/home.js';
+import { bundleCSS } from './bundle-css.js';
 import { copyDir, ensureDirExists } from './fs.js';
 import { registerPartialFile } from './handlebars.js';
 
 ensureDirExists('dist');
 copyDir('src/assets', 'dist/assets');
-copyDir('src/css', 'dist/css');
+await bundleCSS('src/css/index.css', 'dist/css/index.css');
 
 registerPartialFile('head', 'src/partials/head.hbs');
 registerPartialFile('nav', 'src/partials/nav.hbs');
