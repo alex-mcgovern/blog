@@ -1,0 +1,92 @@
+@layer ui {
+    .md-alert {
+        --highlight-color: var(--slate-11);
+        --background-color: var(--slate-2);
+        --border-color: var(--slate-5);
+        --text-color: var(--slate-12);
+
+        width: 100%;
+        margin-top: var(--space-8);
+        margin-bottom: var(--space-8);
+
+        padding: var(--space-2) var(--space-4);
+
+        border-left: 4px solid var(--highlight-color);
+
+        color: var(--text-color);
+        background: var(--background-color);
+
+        p:empty {
+            display: none;
+        }
+
+        .md-alert-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-1);
+
+            font-weight: var(--font-weight-medium);
+            color: var(--highlight-color);
+
+            .md-alert-icon {
+                width: var(--font-size-body-lg);
+                height: var(--font-size-body-lg);
+            }
+        }
+
+        p,
+        li,
+        ol,
+        ul {
+            color: var(--text-color);
+
+            &::marker {
+                color: var(--border-color);
+            }
+        }
+
+        :first-child {
+            margin-top: 0;
+        }
+
+        :last-child {
+            margin-bottom: 0;
+        }
+
+        &.md-alert-note {
+            --highlight-color: var(--blue-11);
+            --background-color: var(--blue-2);
+            --border-color: var(--blue-5);
+            --text-color: var(--blue-12);
+        }
+
+        &.md-alert-tip {
+            --highlight-color: var(--green-11);
+            --background-color: var(--green-2);
+            --border-color: var(--green-5);
+            --text-color: var(--green-12);
+        }
+
+        &.md-alert-important {
+            --highlight-color: var(--purple-11);
+            --background-color: var(--purple-2);
+            --border-color: var(--purple-5);
+            --text-color: var(--purple-12);
+        }
+
+        &.md-alert-warning {
+            --highlight-color: var(--amber-11);
+            --background-color: var(--amber-2);
+            --border-color: var(--amber-5);
+            --text-color: var(--amber-12);
+        }
+
+        &.md-alert-caution {
+            --highlight-color: var(--red-11);
+            --background-color: var(--red-3);
+            --border-color: var(--red-5);
+            --text-color: var(--red-12);
+        }
+    }
+}

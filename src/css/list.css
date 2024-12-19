@@ -1,0 +1,18 @@
+@layer base {
+    ul,
+    ol {
+        color: var(--slate-11);
+        list-style: outside;
+        margin-bottom: var(--space-4);
+
+        li {
+            list-style-type: disc;
+            margin-bottom: var(--space-1);
+            margin-left: var(--space-4);
+
+            &::marker {
+                color: var(--slate-8);
+            }
+        }
+    }
+}

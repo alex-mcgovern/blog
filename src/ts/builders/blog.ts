@@ -62,7 +62,7 @@ export async function blog() {
     const blogIndex = blogIndexTemplate({
         title: 'Alex McGovern',
         description: 'Personal blog of Alex McGovern',
-        posts: entries,
+        posts: entries.reverse(), // NOTE: Entries are named with ISO timestamps, so are naturally sorted oldest first, we want to reverse that
     });
     writeFile('dist/blog/index.html', blogIndex);
     console.info('✅ Generated blog index');

@@ -1,0 +1,14 @@
+@layer base {
+    img {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        background-color: var(--slate-2);
+    }
+
+    figure:has(img),
+    img:not(figure > img) {
+        margin-top: var(--space-4);
+        margin-bottom: var(--space-8);
+    }
+}
